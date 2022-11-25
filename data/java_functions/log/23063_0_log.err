@@ -1,6 +1,0 @@
-INFO - 11/08/22 15:34:29 - 0:00:00 - Number of lines to process: 664
-error maximum recursion depth exceeded in comparison tokenizing and extracting functions
-  0%|          | 0/664 [00:00<?, ?it/s]100%|██████████| 664/664 [00:00<00:00, 7327.32it/s]
-INFO - 11/08/22 15:34:36 - 0:00:07 - Time elapsed: 6.81
-WARNING - 11/08/22 15:34:36 - 0:00:07 - Tokenization of /content/drive/MyDrive/c2c-translation-main/data/java_functions/java.222202.json.gz:1 errors out of 664 lines(0.15%)
-INFO - 11/08/22 15:34:36 - 0:00:07 - Job completed successfully

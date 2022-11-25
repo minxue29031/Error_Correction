@@ -1,3 +1,0 @@
-submitit INFO (2022-11-08 15:34:39,180) - Starting with JobEnvironment(job_id=23097, hostname=292e919d5fa1, local_rank=0(1), node=0(1), global_rank=0(1))
-submitit INFO (2022-11-08 15:34:39,181) - Loading pickle: /content/drive/MyDrive/c2c-translation-main/data/java_functions/log/23097_submitted.pkl
-submitit INFO (2022-11-08 15:34:39,750) - Job completed successfully
