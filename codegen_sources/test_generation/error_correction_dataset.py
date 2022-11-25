@@ -76,13 +76,11 @@ def main(input_data,model_path,bpe_path,bpe_model,input_path,output_path):
     comb=pd.concat(file,axis=1)
     comb.to_csv(output_path.joinpath('pre_ec_dataset.csv'), index=0, sep=',')
 
-
     #Create java error correction dataset(no correct language pair)
     csv_keyword=csv.reader(open(output_path.joinpath('pre_ec_dataset.csv'), 'r'))
     for row in csv_keyword:
         keywords.append(row)
     dict.append(keywords[0])
-
 
     for i in range(1,len(keywords)):
         if keywords[i][19].strip() != keywords[i][20].strip():
@@ -91,7 +89,6 @@ def main(input_data,model_path,bpe_path,bpe_model,input_path,output_path):
 
     final_dataset=pd.read_csv(output_path.joinpath('different_ec_dataset.csv'), encoding='utf-8', header=1)
     final_dataset.to_csv(output_path.joinpath('final_ec_dataset.csv'), index=False)
-
 
     #Divide the dataset into training dataset and testing dataset
     train_ec=pd.read_csv(output_path.joinpath('final_ec_dataset.csv'))
@@ -139,9 +136,7 @@ def main(input_data,model_path,bpe_path,bpe_model,input_path,output_path):
         for i in range(len(data_ec)):
             dataset2_bpe.write(data_ec[i].strip()+"\n")
         dataset2_bpe.close()
-
-
-
+        
 
 if __name__ == "__main__":
     args=get_arguments()
