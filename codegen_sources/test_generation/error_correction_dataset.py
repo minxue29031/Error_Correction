@@ -97,6 +97,7 @@ def main(input_data,model_path,bpe_path,bpe_model,input_path,output_path):
     final_dataset=pd.read_csv(output_path.joinpath('different_ec_dataset.csv'), encoding='utf-8', header=1)
     final_dataset.to_csv(output_path.joinpath('final_ec_dataset.csv'), index=False)
 
+    #Write ori_java to .bpe file
     with open(output_path.joinpath('ori_java.sa.tok'),"r") as f:
         data_ori=f.readlines()
         data_ori = bpe_model.apply([f.strip() for f in data_ori])
@@ -105,6 +106,7 @@ def main(input_data,model_path,bpe_path,bpe_model,input_path,output_path):
             dataset1_bpe.write(data_ori[i].strip()+"\n")
         dataset1_bpe.close()
 
+    #Write ec_java to .bpe file
     with open(output_path.joinpath('ec_java.sa.tok'),"r") as f:
         data_ec=f.readlines()
         data_ec = bpe_model.apply([f.strip() for f in data_ec])
