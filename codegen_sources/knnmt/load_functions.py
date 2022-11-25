@@ -8,10 +8,10 @@ def load_parallel_functions(dataset_path: str, language_pair: str = None):
 
     # Load parallel functions for language pairs containing Java and Python
     if language_pair is None or language_pair == "java_java":
-        java_python_java_ori = open(f"{dataset_path}/ori_java.bpe", "r")
+        java_python_java_ori = open(f"{dataset_path}/train_ori_java.bpe", "r")
         java_ori_functions = java_python_java_ori.readlines()
 
-        java_python_java_ec = open(f"{dataset_path}/ec_java.bpe", "r")
+        java_python_java_ec = open(f"{dataset_path}/train_ec_java.bpe", "r")
         java_ec_functions = java_python_java_ec.readlines()
 
         parallel_functions["java_java"] = list(zip(java_ori_functions, java_ec_functions))
