@@ -97,7 +97,7 @@ def run_command_compile_java_file(folderpath):
 def compile_file(file, folderpath):
     try:
         proc = subprocess.Popen(
-            f"ulimit -S -v {2 * 1024 * 1024 * 1024}; cd {folderpath} && {os.path.join(get_java_bin_path(), 'javac')} --module-path /content/drive/MyDrive/Error_Correction/javafx-sdk-11/lib --add-modules javafx.base {file}",
+            f"ulimit -S -v {2 * 1024 * 1024 * 1024}; cd {folderpath} && {os.path.join(get_java_bin_path(), 'javac')} --module-path /home/minxue/Error_Correction/javafx-sdk-11/lib --add-modules javafx.base {file}",
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True,
