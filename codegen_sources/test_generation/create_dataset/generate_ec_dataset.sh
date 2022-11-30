@@ -1,4 +1,4 @@
-INPUT_DATA='data/parallel_corpus/offline_dataset/train.java_sa-python_sa.python_sa.tok'
+INPUT_DATA='data/parallel_corpus/extract/ori_java.sa.tok'
 MODEL_PATH='models/TransCoder_model_2.pth'
 BPE_PATH='data/bpe/cpp-java-python/codes'
 INPUT_DATASET='data/parallel_corpus/extract'
