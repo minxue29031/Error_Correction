@@ -61,13 +61,7 @@ def main(output_path,csv_path,extract_target):
     function=pre_function.drop(['translated_python_functions_beam_0'],axis=1)
     function.to_csv(output_path.joinpath(f'extract_java_function.csv'), index=False)
 
-    #Write .tok dataset
-    dataset_trans_pre=open(output_path.joinpath('ori_java.sa.tok'),"w")
-    read_ori_java=pd.read_csv(output_path.joinpath('extract_java_function.csv'))
-    for i in range(0,len(read_ori_java)):
-        dataset_trans_pre.write(read_ori_java.iloc[i]["java_function"].strip()+"\n")
-    dataset_trans_pre.close()
-
+    
 
 if __name__ == "__main__":
     args = get_arguments()
