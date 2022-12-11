@@ -1,8 +1,8 @@
-#!python /content/drive/MyDrive/Error_Correction/codegen_sources/test_generation/extract_java_BT.py 
-#--output_path 'data/parallel_corpus/extract' 
-#--csv_path 'data/parallel_corpus/results/transcoder_outputs/python_transcoder_translation.csv' 
-#--extract_target 'data/parallel_corpus/offline_dataset/train.java_sa-python_sa.java_sa.tok'
-
+# Copyright (c) 2019-present, Facebook, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
 
 import sys
 import csv
@@ -77,4 +77,3 @@ def main(output_path,csv_path,extract_target,translated_func):
 if __name__ == "__main__":
     args = get_arguments()
     main(args.output_path,args.csv_path,args.extract_target,args.translated_func)
-
