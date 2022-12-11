@@ -11,7 +11,7 @@ import pandas as pd
 import os
 from pathlib import Path
 
-#os.makedirs('data/parallel_corpus/'+'extract')
+os.makedirs('data/parallel_corpus/'+'extract')
 
 def get_arguments():
     parser = argparse.ArgumentParser(description="")
@@ -41,7 +41,6 @@ def main(output_path,csv_path,extract_target,translated_func):
     extract_target=Path(extract_target)
     output_path=Path(output_path)
     translated_func=Path(translated_func)
-    #translated_func='data/parallel_corpus/offline_dataset/train.java_sa-python_sa.python_sa.tok' 
 
     csv_keyword=csv.reader(open(csv_path, 'r'))
     with open(extract_target,'r') as f:
@@ -55,18 +54,14 @@ def main(output_path,csv_path,extract_target,translated_func):
     for row in csv_keyword:
         keywords.append(row)
     dict1.append(keywords[0])
-    print("@@@@@@",keywords[0])
 
     dict2.append("python_function")
-    print("###",dict2)
     for i in range(len(keywords)):
         for j in range(len(result)):
             if result[j][0] in keywords[i][19]:
                 print(keywords[i])
                 dict1.append(keywords[i])
                 dict2.append(translated_result[j][0])
-                print("BBBBB",translated_result[j])
-                print("AAAAA",dict2)
             dir_all=pd.DataFrame(dict1)
             dir_python = pd.DataFrame(dict2)
             df=pd.concat([dir_all,dir_python],axis=1).to_csv(output_path.joinpath(f"write_java_function.csv"), index=False)
