@@ -13,7 +13,7 @@ import fastBPE
 from codegen_sources.model.translate import Translator
 from pathlib import Path
 
-#os.makedirs('data/parallel_corpus/'+'error_correction_dataset')
+os.makedirs('data/parallel_corpus/'+'error_correction_dataset')
 def get_arguments():
     parser = argparse.ArgumentParser(description="")
     parser.add_argument(
