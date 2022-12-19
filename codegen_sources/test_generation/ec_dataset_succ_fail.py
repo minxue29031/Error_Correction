@@ -100,7 +100,7 @@ def extract_function(input_path):
                 dict.append(row)
             dir = pd.DataFrame(dict).to_csv(input_path.joinpath(f"extract_func_pr.csv"), index=False)
 
-    extract_func=pd.read_csv(input_path.joinpath(f"extract_func_pr.csv"), encoding='utf-8', header=1)
+    extract_func=pd.read_csv(input_path.joinpath(f"extract_func_pr.csv"), encoding='utf-8', header=1).drop_duplicates()
     extract_func.to_csv(input_path.joinpath(f"extract_func.csv"), index=False)
 
 
