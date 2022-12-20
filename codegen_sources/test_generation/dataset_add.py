@@ -139,6 +139,7 @@ def build_dataset_pre(ori_language_path,target_language_path,output_path):
 
 
 
+    
 if __name__ == "__main__":
     args=get_arguments()
     bpe_model = fastBPE.fastBPE(args.bpe_path)
