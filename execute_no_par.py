@@ -67,7 +67,7 @@ if __name__ == "__main__":
     language_pair = "java_java"
     src_language = language_pair.split("_")[0]
     tgt_language = language_pair.split("_")[1]
-    translator_path = f"models/TransCoder_model_1.pth"
+    translator_path = f"models/TransCoder_model_2.pth"
 
     translator = Translator(
         translator_path,
