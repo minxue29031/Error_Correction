@@ -14,7 +14,8 @@ def load_parallel_functions(dataset_path: str, language_pair: str = None):
         java_python_java_ec = open(f"{dataset_path}/train_ec_java.bpe", "r")
         java_ec_functions = java_python_java_ec.readlines()
 
-        parallel_functions["java_java"] = list(zip(java_ori_functions, java_ec_functions))
+        #parallel_functions["java_java"] = list(zip(java_ori_functions, java_ec_functions))
+        parallel_functions["java_java"] = list(zip(java_ec_functions, java_ori_functions))
 
     # Deduplicate parallel functions
     parallel_functions = deduped_parallel_functions(parallel_functions)
