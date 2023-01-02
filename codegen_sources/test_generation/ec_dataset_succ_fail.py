@@ -46,10 +46,10 @@ def main(input_path,output_path):
 
     for i in range(len(keywords)):
         for j in range(len(keywords[i])):
-            if "success" in keywords[i][j]:
+            if "('success', " in keywords[i][j]:
                 success_data.write(keywords[i][j-t].strip()+",,,") 
                 
-            if "failure" in keywords[i][j]:
+            if "('failure', " in keywords[i][j]:
                 failure_data.write(keywords[i][j-t].strip()+",,,")
 
         failure_data.write("\n")
@@ -96,7 +96,7 @@ def extract_function(input_path):
             if "TARGET_CLASS" in subrow:
                 dict.append(row)
 
-            if "success" in subrow:
+            if "('success'" in subrow:
                 dict.append(row)
     dir = pd.DataFrame(dict).to_csv(input_path.joinpath(f"extract_func_pr.csv"), index=False)
 
