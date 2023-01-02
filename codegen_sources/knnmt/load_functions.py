@@ -1,6 +1,39 @@
 from hashlib import sha256
 from typing import Optional
 import numpy as np
+import os
+
+os.makedirs('out/knnmt/mixed/'+'datastore')
+LANGUAGE_PAIRS = ["python_python",]
+
+def created_mixed_datastore(knnmt_dir: str):
+    for language_pair in LANGUAGE_PAIRS:
+        # Load datastore keys from the parallel corpus and from the validation set
+        datastore_keys = np.load(f"{knnmt_dir}/parallel_corpus1/datastore/keys_{language_pair}.npy")
+        datastore_keys_valid = np.load(f"{knnmt_dir}/parallel_corpus2/datastore/keys_{language_pair}.npy")
+
+        # Load datastore values from the parallel corpus and from the validation set
+        datastore_values = np.load(f"{knnmt_dir}/parallel_corpus1/datastore/values_{language_pair}.npy")
+        datastore_values_valid = np.load(f"{knnmt_dir}/parallel_corpus2/datastore/values_{language_pair}.npy")
+
+        # Load datastore inputs from the parallel corpus and from the validation set
+        datastore_inputs = np.load(f"{knnmt_dir}/parallel_corpus1/datastore/inputs_{language_pair}.npy")
+        datastore_inputs_valid = np.load(f"{knnmt_dir}/parallel_corpus2/datastore/inputs_{language_pair}.npy")
+
+        # Concatenate datastores
+        datastore_keys = np.concatenate((datastore_keys, datastore_keys_valid), axis=0)
+        datastore_values = np.concatenate((datastore_values, datastore_values_valid), axis=0)
+        datastore_inputs = np.concatenate((datastore_inputs, datastore_inputs_valid), axis=0)
+
+        print("Keys", datastore_keys.shape)
+        print("Values", datastore_values.shape)
+        print("Inputs", datastore_inputs.shape)
+
+        # Save datastores
+        np.save(f"{knnmt_dir}/mixed/datastore/keys_{language_pair}.npy", datastore_keys)
+        np.save(f"{knnmt_dir}/mixed/datastore/values_{language_pair}.npy", datastore_values)
+        np.save(f"{knnmt_dir}/mixed/datastore/inputs_{language_pair}.npy", datastore_inputs)
+
 
 
 def load_parallel_functions(dataset_path: str, language_pair: str = None):
