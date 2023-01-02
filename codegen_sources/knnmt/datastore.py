@@ -93,6 +93,18 @@ def train_datastore(knnmt: KNNMT, language_pair: Optional[str]):
 knnmt_parallel_corpus = KNNMT("out/knnmt/parallel_corpus")
 parallel_functions = load_functions.load_parallel_functions("data/parallel_corpus/error_correction_dataset")
 add_to_datastore(knnmt_parallel_corpus, parallel_functions)
+train_datastore(knnmt_parallel_corpus,"python_python")
+
+# Create kNN-MT datastore from parallel corpus
+knnmt_parallel_corpus = KNNMT("out/knnmt/parallel_corpus")
+parallel_functions = load_functions.load_parallel_functions("data/parallel_corpus/error_correction_dataset")
+add_to_datastore(knnmt_parallel_corpus, parallel_functions)
+train_datastore(knnmt_parallel_corpus,"python_python")
+
+# Create kNN-MT datastore from parallel corpus
+knnmt_parallel_corpus = KNNMT("out/knnmt/parallel_corpus")
+parallel_functions = load_functions.load_parallel_functions("data/parallel_corpus/error_correction_dataset")
+add_to_datastore(knnmt_parallel_corpus, parallel_functions)
 train_datastore(knnmt_parallel_corpus,"java_java")
 
 
