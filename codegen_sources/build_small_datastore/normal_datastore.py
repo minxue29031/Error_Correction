@@ -38,7 +38,6 @@ def remove_rows(values, keys, inputs):
     return values_result, keys_result, inputs_result
 
 
-
 def main():
     # Process the values_python_python.npy file and retrieve the results
     value_file = 'values_python_python.npy'
@@ -74,9 +73,6 @@ def main():
     print("values_python_python_final.npy content:", np.load(values_final_output_file).shape)
     print("keys_python_python_final.npy content:", np.load(keys_final_output_file).shape)
     print("inputs_python_python_final.npy content:", np.load(inputs_final_output_file).shape)
-
-
-
 
 
 if __name__ == '__main__':
