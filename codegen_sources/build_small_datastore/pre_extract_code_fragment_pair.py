@@ -49,11 +49,13 @@ class DataExtractor:
             for i in range(len(column_1)):
                 writer.writerow([' '.join(column_1[i]), ' '.join(column_2[i])])  # Write the data rows
 
+                
     def write_to_file(self, data, file_path):
         with open(file_path, 'w', encoding='utf-8') as file:
             for sentence in data:
                 file.write(' '.join(sentence) + '\n')
 
+                
     def process_data(self):
         column_1, column_2 = self.extract_data()
 
@@ -83,6 +85,7 @@ class DataExtractor:
             tokens = filtered_column_2[i]
             print(f"Sentence {i+1}: {' '.join(tokens)}")
 
+            
 # Usage
 extractor_normal = DataExtractor('extract_normal_pairs.csv', 'normal_succ_fail_fragment_pairs.csv', 'normal_fail_fragments.tok', 'normal_succ_fragments.tok', 'utf-8')
 extractor_normal.process_data()
