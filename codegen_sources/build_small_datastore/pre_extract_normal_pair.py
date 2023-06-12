@@ -80,7 +80,5 @@ def main():
     generate_extract_normal_pairs('output_token.csv', 'pre_extract_normal_pairs.csv', 'extract_normal_pairs.csv')
 
 
-
-
 if __name__ == '__main__':
     main()
