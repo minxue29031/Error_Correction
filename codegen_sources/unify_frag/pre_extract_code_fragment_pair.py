@@ -23,17 +23,18 @@ class DataExtractor:
 
                     if column_1_tokens:  # Check if the first column is not empty
                         if len(column_2_tokens) <= 4:
-                            column_1.append(column_1_tokens)
+                            column_1.append(column_1_tokens[0:4])
                             column_2.append(column_2_tokens)
                         else:
                             column_2_last_four_to_last_one = column_2_tokens[-4:]  # Last four tokens of column 2
                             column_2_len = len(column_2_tokens)
-                            column_2_start_pos = column_2_len - 4
-                            column_2_end_pos = column_2_len - 1
+                            print("column_2_len:", column_2_len)
 
-                            column_1_start_pos = max(column_2_start_pos - 2, 0)
-                            column_1_end_pos = min(column_2_end_pos + 4, len(column_1_tokens) - 1)
-                            column_1_tokens_extracted = column_1_tokens[column_1_start_pos:column_1_end_pos+1]  # Tokens from column 1: POSi-2 to POSj+2
+                            column_1_start_pos = max(column_2_len - 4, 0)
+                            column_1_end_pos = min(column_2_len + 5, len(column_1_tokens))
+                            print("column_1_start_pos:", column_1_start_pos)
+                            print("column_1_end_pos:", column_1_end_pos)                            
+                            column_1_tokens_extracted = column_1_tokens[column_1_start_pos:column_1_end_pos]  # Tokens from column 1: POSi-2 to POSj+2
 
                             column_1.append(column_1_tokens_extracted)
                             column_2.append(column_2_last_four_to_last_one)
@@ -84,7 +85,7 @@ class DataExtractor:
                 deduplicated_column_2.append(row[1].split(' '))
 
         fail_fragments = [sentence_tokens for sentence_tokens in deduplicated_column_1]
-        succ_fragments = [sentence_tokens[-4:] for sentence_tokens in deduplicated_column_2]
+        succ_fragments = [sentence_tokens for sentence_tokens in deduplicated_column_2]
 
         self.write_to_file(fail_fragments, self.fail_fragments_file)
         self.write_to_file(succ_fragments, self.succ_fragments_file)
@@ -100,8 +101,12 @@ class DataExtractor:
             print(f"Sentence {i+1}: {' '.join(tokens)}")
 
 # Usage
-extractor_normal = DataExtractor('extract_normal_pairs.csv', 'normal_succ_fail_fragment_pairs.csv', 'normal_fail_fragments.tok', 'normal_succ_fragments.tok', 'utf-8')
-extractor_normal.process_data()
+# extractor_normal = DataExtractor('extract_normal_pairs.csv', 'normal_succ_fail_fragment_pairs.csv', 'normal_fail_fragments.tok', 'normal_succ_fragments.tok', 'gbk')
+# extractor_normal.process_data()
 
-extractor_EOS = DataExtractor('extract_EOS_pairs.csv', 'EOS_succ_fail_fragment_pairs.csv', 'EOS_fail_fragments.tok', 'EOS_succ_fragments.tok', 'utf-8')
+# extractor_EOS = DataExtractor('extract_EOS_pairs.csv', 'EOS_succ_fail_fragment_pairs.csv', 'EOS_fail_fragments.tok', 'EOS_succ_fragments.tok', 'gbk')
+# extractor_EOS.process_data()
+
+
+extractor_EOS = DataExtractor('extract_AAA.csv', 'EOS_succ_fail_fragment_pairs.csv', 'EOS_fail_fragments.tok', 'EOS_succ_fragments.tok', 'gbk')
 extractor_EOS.process_data()
