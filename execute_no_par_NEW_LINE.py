@@ -5,6 +5,7 @@ import numpy as np
 from codegen_sources.model.translate import Translator
 from codegen_sources.knnmt.load_functions import extract_functions
 from codegen_sources.knnmt.knnmt import KNNMT
+import time
 
 #os.makedirs('data/'+'ec_result_py')
 
@@ -12,10 +13,9 @@ def error_correction_output(knnmt: KNNMT, translator: Translator, language_pair:
     src_language, tgt_language = language_pair.split("_")[0], language_pair.split("_")[1]
 
     # Get tokenized source function
-    source_functions = open(f"data/ec_result_py/test_input/test_dataset.sa.tok",'r').readlines()
+    source_functions = open(f"data/parameter/test_unify.tok",'r').readlines()
 
-    out = open("data/ec_result_py/write_ec_results.sa.tok","w") 
-    out_noknn = open("data/ec_result_py/write_no_ec_results.sa.tok","w") 
+    out = open("data/parameter/output_tc.sa.tok","w") 
     for i in range(len(source_functions)):
         generated = ""
         inputs = ""
@@ -33,23 +33,18 @@ def error_correction_output(knnmt: KNNMT, translator: Translator, language_pair:
         out.write('\n')
 
 
-        # Get original TransCoder translation
-        print("-----------------original-TransCoder-translation-------------")
-        translator.use_knn_store = False
-        original_translation = translator.translate(source, src_language, tgt_language, tokenized=True, detokenize=False)[0]
-        print(original_translation)
-
-        out_noknn.write(original_translation)
-        out_noknn.write('\n')
 
     out.close()
-    out_noknn.close()
+    # out_noknn.close()
 
 if __name__ == "__main__":
+
+    start_time = time.time() 
+
     #KNN-MT parameters
     knnmt = KNNMT("out/knnmt/parallel_corpus")
-    knnmt_k=8
-    knnmt_lambda=0.1
+    knnmt_k=1
+    knnmt_lambda=0
     knnmt_temperature=10
     knnmt_tc_temperature=5
 
@@ -77,3 +72,7 @@ if __name__ == "__main__":
 
     #Error_Correction model output
     error_correction_output(knnmt, translator, language_pair)
+    
+    end_time = time.time()  # 记录结束时间
+    elapsed_time = end_time - start_time
+    print(f"Total runtime: {elapsed_time} seconds")
