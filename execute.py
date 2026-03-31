@@ -24,7 +24,6 @@ def error_correction_output(knnmt: KNNMT, translator: Translator, language_pair:
         source = source_functions[i]
 
         # Get KNN-MT translation
-        print("---------------------KNN-MT-translation----------------------")
         translator.use_knn_store = True
         translation = translator.translate(source, src_language, tgt_language, tokenized=True, detokenize=False)[0]
         print(translation)
@@ -73,6 +72,6 @@ if __name__ == "__main__":
     #Error_Correction model output
     error_correction_output(knnmt, translator, language_pair)
     
-    end_time = time.time()  # 记录结束时间
+    end_time = time.time()  
     elapsed_time = end_time - start_time
     print(f"Total runtime: {elapsed_time} seconds")
